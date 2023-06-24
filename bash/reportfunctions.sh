@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Function to display CPU information
-# Function to display CPU information
 function cpuinfo {
     echo
     echo CPU Information
@@ -53,7 +52,7 @@ function osreport {
     echo Linux Distro: $linuxdistro
     echo Distro Version: $distroversion
 }
-# Grabbing the information for the table
+# Function for reporting RAM information and putting it into a table
 function ramreport {
    manufacturer=$(sudo lshw -class memory | grep vendor | tail -1 | awk '{print $2, $3, $4}' )
    product=$(sudo lshw -class memory | grep DIMM | tail -1 | awk '{print $3}' )
@@ -65,15 +64,15 @@ function ramreport {
    echo
    echo Ram Information
    echo ===============
-    #Creating the table with the variables
-    {
+#Creating the table with the variables from above within the function
+   {
         echo   
-        echo "| Manufacturer | Model | Memory | Speed | Location"
-        echo "| ${manufacturer// /.} | $product | $memtotal | $speed | ${physical// /.}"
-    } | column -t 
+        echo "| Manufacturer | Model | Memory | Speed | Location |"
+        echo "| ${manufacturer// /.} | $product | $memtotal | $speed | ${physical// /.} |"
+   } | column -t 
 }
 
-#Grabbing video card information from lshw -C display
+#Function for grabbing Video/Chip information within lshw -C display
 function video {
    echo 
    echo GPU Information
@@ -84,7 +83,7 @@ function video {
    echo Manufacturer: $vendor
    echo Model: $model
 }
-
+#Function grabbing information for the disk and putting it into a table
 function disktable {
    manufacturer=$(sudo lshw -class disk | grep vendor | tail -1 | awk '{print $2}' )
    product=$(sudo lshw -class disk | grep product | tail -1 | awk '{print $2}' )
@@ -96,11 +95,10 @@ function disktable {
    echo
    echo Disk Information
    echo ================
-    {
-     echo
-        echo "| Manufacturer | Product | Disksize | Available | Location"
-        echo "| $manufacturer | $product | $disksize | $diskfree | ${physical// /.}"
-    } | column -t 
+   {
+        echo "| Manufacturer | Product | Disksize | Available | Location |"
+        echo "| $manufacturer | $product | $disksize | $diskfree | ${physical// /.} |"
+   } | column -t 
 }
 
 
