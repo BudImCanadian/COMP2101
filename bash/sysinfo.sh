@@ -41,7 +41,7 @@ while [[ $# -gt 0 ]]; do
             exit 0
             ;;
         -network|--network)
-            network
+            networkreport
             exit 0
             ;;
         -v|--verbose)
@@ -63,3 +63,4 @@ osreport
 ramreport
 video
 disktable
+networkreport
