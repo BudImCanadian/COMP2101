@@ -56,7 +56,6 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Default behavior when no options are provided
-displayhelp
 cpuinfo
 system
 osreport
