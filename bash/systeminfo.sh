@@ -17,7 +17,7 @@ function displayhelp {
     echo "Options:"
     echo "  -h, --help        Display this help message"
     echo "  -system, --system      Display system information"
-    echo "  -disk, --disk         Display all information"
+    echo "  -disk, --disk         Display disk information"
     echo "  -v, --verbose     Run script verbosely and show errors"
 }
 
