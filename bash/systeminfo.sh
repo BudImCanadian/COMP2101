@@ -6,19 +6,16 @@
 source reportfunctions.sh
 
 # Check for root permissions
-if [[ $(id -u) -ne 0 ]]; then
-    echo "This script must be run as root"
-    exit 1
+if [ "$(whoami)" != "root" ]; then echo "ERROR! Must be root";exit 1; 
 fi
-
 # Function to display help information
 function displayhelp {
     echo "Usage: scriptname [OPTIONS]"
     echo "Options:"
-    echo "  -h, --help        Display this help message"
+    echo "  -h, --help             Display this help message"
     echo "  -system, --system      Display system information"
-    echo "  -disk, --disk         Display disk information"
-    echo "  -v, --verbose     Run script verbosely and show errors"
+    echo "  -disk, --disk          Display disk information"
+    echo "  -v, --verbose          Run script verbosely and show errors"
 }
 
 # while loop to check for options
