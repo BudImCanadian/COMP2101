@@ -33,8 +33,8 @@ function system {
     serialnumber=$(sudo lshw -class system 2>&1 | grep -w serial: | sed 's/.*serial: //')
     space=$(df / -h 2>&1 | awk 'NR==2 {print $4}')
     ip=$(ip addr 2>&1 | awk 'NR==10 {print $2}')
-    manufacturer=$(sudo dmidecode -s system-manufacturer 2>/dev/null | head -n 1)
-    description=$(sudo dmidecode -s system-product-name )
+    manufacturer=$(sudo hostnamectl | awk 'NR==10 {print $3, $4}' )
+    description=$(sudo hostnamectl| awk 'NR==11 {print $3, $4, $5}' )
     
     echo Manufacturer: $manufacturer
     echo Description: $description
