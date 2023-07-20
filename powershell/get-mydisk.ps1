@@ -1,0 +1,1 @@
+ get-disk | ft Manufacturer, Model, SerialNumber, FirmwareVersion, @{Name="Size (GB)"; Expression={[int]($_.Size/1GB)}}
