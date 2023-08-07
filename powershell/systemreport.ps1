@@ -5,7 +5,7 @@ param(
 )
 
 if (!$System -and !$Disks -and !$Network) {
-    # If no parameters are given on the command line, generate the full report with all sections included
+# If no parameters are given on the command line, generate the full report with all functions
     Write-Output "System Hardware Description"
     Get-SystemHardware
 
@@ -27,7 +27,7 @@ if (!$System -and !$Disks -and !$Network) {
     Write-Output "`nVideo Controller Information"
     Get-VideoControllerInfo
 } else {
-    # If parameters are given on the command line, generate the specified sections of the report
+# Display the specified sections of the report for -system
     if ($System) {
         Write-Output "System Hardware Description"
         Get-SystemHardware
@@ -44,12 +44,12 @@ if (!$System -and !$Disks -and !$Network) {
         Write-Output "`nVideo Controller Information"
         Get-VideoControllerInfo
     }
-
+# Display the specified sections of the report for -disks
     if ($Disks) {
         Write-Output "Physical Disk Drives Summary"
         Get-DiskInfo
     }
-
+# Display the specified sections of the report for -network
     if ($Network) {
         Write-Output "Network Adapter Configuration Report"
         Get-NetworkAdapterConfig
