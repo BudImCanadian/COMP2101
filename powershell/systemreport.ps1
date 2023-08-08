@@ -3,9 +3,8 @@ param(
     [switch]$Disks,
     [switch]$Network
 )
-
-if (!$System -and !$Disks -and !$Network) {
 # If no parameters are given on the command line, generate the full report with all functions
+if (!$System -and !$Disks -and !$Network) {
     Write-Output "System Hardware Description"
     Get-SystemHardware
 
